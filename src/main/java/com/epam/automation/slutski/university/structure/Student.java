@@ -57,13 +57,11 @@ public class Student extends Group {
     }
 
     public double getStudentAverageNote() {
-        double coursesQuantity = courses.size();
-        double totalNotes = 0;
-        for (int value : courses.values()) {
-            totalNotes += value;
-        }
+        int coursesNumber = courses.size();
+        int totalNotes = courses.values().stream()
+                .reduce(0, (a, b) -> a + b);
 
-        return totalNotes / coursesQuantity;
+        return (double) totalNotes / coursesNumber;
     }
 
     public String getName() {

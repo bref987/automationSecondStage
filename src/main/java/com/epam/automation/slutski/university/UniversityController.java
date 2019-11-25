@@ -4,26 +4,27 @@ import com.epam.automation.slutski.university.exceptions.IncorrectNoteException;
 import com.epam.automation.slutski.university.exceptions.NoAnyCourseException;
 import com.epam.automation.slutski.university.exceptions.NoAnyUnityException;
 import com.epam.automation.slutski.university.logic.UniversityLogic;
-import com.epam.automation.slutski.university.structure.Faculty;
-import com.epam.automation.slutski.university.structure.Group;
 import com.epam.automation.slutski.university.structure.Student;
 import com.epam.automation.slutski.university.students.StudentsList;
+import com.epam.automation.slutski.university.types.Courses;
 import com.epam.automation.slutski.university.types.Faculties;
 
-import java.util.HashMap;
 import java.util.List;
 
-public class UniversityController{
+public class UniversityController {
 
     public static void main(String[] args) throws NoAnyCourseException, IncorrectNoteException, NoAnyUnityException {
 
-        try{
+        try {
             List<? extends Student> students = StudentsList.getStudentList();
 
             UniversityLogic university = new UniversityLogic(students);
 
-            Student student = new Student();
+            System.out.println(university.getAverageUniversityCourseNote(Courses.CULTUROLOGY));
 
+            System.out.println(university.getAverageFacultyGroupCourseNote(Faculties.FRENCH, 110, Courses.LINGUISTICS));
+
+            System.out.println(students.get(0).getStudentAverageNote());
 
         } catch (NoAnyCourseException | IncorrectNoteException | NoAnyUnityException e) {
             System.out.println(e);

@@ -1,6 +1,9 @@
 package com.epam.automation.slutski.university.logic;
 
+import com.epam.automation.slutski.university.structure.Faculty;
 import com.epam.automation.slutski.university.structure.Student;
+import com.epam.automation.slutski.university.types.Courses;
+import com.epam.automation.slutski.university.types.Faculties;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,39 @@ public class UniversityLogic {
     public List<? extends Student> getStudents() {
         return students;
     }
+
+    public double getAverageUniversityCourseNote(Courses course) {
+
+        int studentsNumber = students.stream()
+                .filter(a -> ((Student) a).getCourses().containsKey(course))
+                .toArray().length;
+
+        int totalNotes = students.stream()
+                .filter(a -> ((Student) a).getCourses().containsKey(course))
+                .map(a -> ((Student) a).getCourses().get(course))
+                .reduce(0, (a, b) -> a + b);
+
+        return (double) totalNotes / studentsNumber;
+    }
+
+    public double getAverageFacultyGroupCourseNote(Faculties facultyName, int groupNumber, Courses course) {
+
+        int studentsNumber = students.stream()
+                .filter(a -> ((Student) a).getFacultyName() == facultyName)
+                .filter(a -> ((Student) a).getGroupNumber() == groupNumber)
+                .filter(a -> ((Student) a).getCourses().containsKey(course))
+                .toArray().length;
+
+        int totalNotes = students.stream()
+                .filter(a -> ((Student) a).getFacultyName() == facultyName)
+                .filter(a -> ((Student) a).getGroupNumber() == groupNumber)
+                .filter(a -> ((Student) a).getCourses().containsKey(course))
+                .map(a -> ((Student) a).getCourses().get(course))
+                .reduce(0, (a, b) -> a + b);
+
+        return (double) totalNotes / studentsNumber;
+    }
+
 
     @Override
     public String toString() {
