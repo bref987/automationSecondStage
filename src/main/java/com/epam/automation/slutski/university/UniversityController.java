@@ -8,6 +8,7 @@ import com.epam.automation.slutski.university.structure.Student;
 import com.epam.automation.slutski.university.students.StudentsList;
 import com.epam.automation.slutski.university.types.Courses;
 import com.epam.automation.slutski.university.types.Faculties;
+import com.epam.automation.slutski.university.view.Printer;
 
 import java.util.List;
 
@@ -20,11 +21,11 @@ public class UniversityController {
 
             UniversityLogic university = new UniversityLogic(students);
 
-            System.out.println(university.getAverageUniversityCourseNote(Courses.CULTUROLOGY));
+            Printer.print(university.getAverageUniversityCourseNote(Courses.CULTUROLOGY));
 
-            System.out.println(university.getAverageFacultyGroupCourseNote(Faculties.FRENCH, 110, Courses.LINGUISTICS));
+            Printer.print(university.getAverageFacultyGroupCourseNote(Faculties.FRENCH, 110, Courses.LINGUISTICS));
 
-            System.out.println(students.get(0).getStudentAverageNote());
+            Printer.print(students.get(0).getStudentAverageNote());
 
         } catch (NoAnyCourseException | IncorrectNoteException | NoAnyUnityException e) {
             System.out.println(e);

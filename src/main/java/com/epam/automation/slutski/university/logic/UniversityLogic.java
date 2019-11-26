@@ -45,7 +45,7 @@ public class UniversityLogic {
             throws NoAnyUnityException, NoAnyCourseException {
 
         if (getFacultyGroupCourseStudents(facultyName, groupNumber, course).size() > 0) {
-            
+
             int studentsNumber = students.stream()
                     .filter(a -> ((Student) a).getFacultyName() == facultyName)
                     .filter(a -> ((Student) a).getGroupNumber() == groupNumber)
