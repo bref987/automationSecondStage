@@ -6,6 +6,7 @@ public enum Courses {
     GERMAN,
     FRENCH,
     LINGUISTICS,
+    Math,
     SPANISH,
     PHONETICS_ENGLISH,
     PHONETICS_GERMAN,
