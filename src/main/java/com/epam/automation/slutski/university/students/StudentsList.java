@@ -32,7 +32,7 @@ public class StudentsList {
                 new Student(Faculties.FRENCH, 110, "Helene",
                         new HashMap<Courses, Integer>() {
                             {
-                                put(Courses.FRENCH, 3);
+                                put(Courses.FRENCH, 4);
                                 put(Courses.CULTUROLOGY, 4);
                                 put(Courses.LINGUISTICS, 5);
                                 put(Courses.PHONETICS_FRENCH, 6);
@@ -54,7 +54,7 @@ public class StudentsList {
                 new Student(Faculties.FRENCH, 111, "Marina",
                         new HashMap<Courses, Integer>() {
                             {
-                                put(Courses.FRENCH, 7);
+                                put(Courses.FRENCH, 6);
                                 put(Courses.CULTUROLOGY, 6);
                                 put(Courses.LINGUISTICS, 5);
                                 put(Courses.PHONETICS_FRENCH, 4);
@@ -109,7 +109,7 @@ public class StudentsList {
                 new Student(Faculties.GERMAN, 114, "Victor",
                         new HashMap<Courses, Integer>() {
                             {
-                                put(Courses.FRENCH, 2);
+                                put(Courses.GERMAN, 2);
                                 put(Courses.CULTUROLOGY, 1);
                                 put(Courses.LINGUISTICS, 0);
                                 put(Courses.PHONETICS_GERMAN, 1);
