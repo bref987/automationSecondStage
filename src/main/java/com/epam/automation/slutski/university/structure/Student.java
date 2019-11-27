@@ -5,12 +5,14 @@ import com.epam.automation.slutski.university.exceptions.NoAnyCourseException;
 import com.epam.automation.slutski.university.exceptions.NoAnyUnityException;
 import com.epam.automation.slutski.university.types.Courses;
 import com.epam.automation.slutski.university.types.Faculties;
+import org.apache.log4j.Logger;
 
-import javax.xml.ws.FaultAction;
 import java.util.Map;
 import java.util.Objects;
 
 public class Student extends Group {
+
+    static Logger logger = Logger.getLogger(Student.class);
 
     private String name;
     private Map<Courses, Integer> courses;
@@ -25,7 +27,7 @@ public class Student extends Group {
     public Student(Faculties facultyName, Integer groupNumber) throws NoAnyUnityException {
         super(facultyName, groupNumber);
 
-        System.out.println("No any student in group");
+        logger.error("No any student in group");
         throw new NoAnyUnityException();
     }
 
@@ -33,7 +35,7 @@ public class Student extends Group {
         super(facultyName, groupNumber);
         this.name = name;
 
-        System.out.println("No any course");
+        logger.error("No any course");
         throw new NoAnyCourseException();
     }
 
@@ -45,23 +47,15 @@ public class Student extends Group {
 
         if (courses.size() == 0) {
 
-            System.out.println("No any course");
+            logger.error("No any course");
             throw new NoAnyCourseException();
         } else if (courses.values().stream()
                 .filter(a -> a >= 0 && a <= 10)
                 .toArray().length != courses.size()) {
 
-            System.out.println("Incorrect note");
+            logger.error("Incorrect note");
             throw new IncorrectNoteException();
         }
-    }
-
-    public double getStudentAverageNote() {
-        int coursesNumber = courses.size();
-        int totalNotes = courses.values().stream()
-                .reduce(0, (a, b) -> a + b);
-
-        return (double) totalNotes / coursesNumber;
     }
 
     public String getName() {
@@ -78,6 +72,14 @@ public class Student extends Group {
 
     public void setCourses(Map<Courses, Integer> courses) {
         this.courses = courses;
+    }
+
+    public double getStudentAverageNote() {
+        int coursesNumber = courses.size();
+        int totalNotes = courses.values().stream()
+                .reduce(0, (a, b) -> a + b);
+
+        return (double) totalNotes / coursesNumber;
     }
 
     @Override

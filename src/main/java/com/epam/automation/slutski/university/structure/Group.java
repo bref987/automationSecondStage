@@ -2,8 +2,11 @@ package com.epam.automation.slutski.university.structure;
 
 import com.epam.automation.slutski.university.exceptions.NoAnyUnityException;
 import com.epam.automation.slutski.university.types.Faculties;
+import org.apache.log4j.Logger;
 
 public class Group extends Faculty {
+
+    static Logger logger = Logger.getLogger(Group.class);
 
     private int groupNumber;
 
@@ -14,7 +17,7 @@ public class Group extends Faculty {
     public Group(Faculties facultyName) throws NoAnyUnityException {
         super(facultyName);
 
-        System.out.println("No any group at the university");
+        logger.error("No any group at the university");
         throw new NoAnyUnityException();
     }
 

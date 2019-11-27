@@ -28,7 +28,7 @@ public class UniversityController {
             Printer.print(students.get(0).getStudentAverageNote());
 
         } catch (NoAnyCourseException | IncorrectNoteException | NoAnyUnityException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 }

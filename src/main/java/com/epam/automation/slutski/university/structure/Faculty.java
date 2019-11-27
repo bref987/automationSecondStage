@@ -2,15 +2,18 @@ package com.epam.automation.slutski.university.structure;
 
 import com.epam.automation.slutski.university.exceptions.NoAnyUnityException;
 import com.epam.automation.slutski.university.types.Faculties;
+import org.apache.log4j.Logger;
 
 public class Faculty {
+
+    static Logger logger = Logger.getLogger(Faculty.class);
 
     private Faculties facultyName;
 
     public Faculty() throws NoAnyUnityException {
         super();
 
-        System.out.println("No any faculty at the university");
+        logger.error("No any faculty at the university");
         throw new NoAnyUnityException();
     }
 
